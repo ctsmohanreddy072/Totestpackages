@@ -20,6 +20,5 @@ jobs:
     
     - name: Upload Newtonsoft.Json 13.0.3
       run: |
-        dotnet nuget push "newtonsoft.json.13.0.3.nupkg" \
-          --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json \
-          --api-key ${{ secrets.GITHUB_TOKEN }}
+          nuget sources Add -Name "GitHub" -Source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" -Username "${{ github.actor }}" -Password "${{ secrets.GITHUB_TOKEN }}"
+          nuget push newtonsoft.json.13.0.3.nupkg -Source "GitHub"
