@@ -19,6 +19,6 @@ jobs:
         dotnet-version: '6.0.x'
     
     - name: Restore nuget packages
-      run: dotnet restore
+      run: dotnet restore --verbosity detailed
       env:
         NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
